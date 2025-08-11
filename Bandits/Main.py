@@ -3,6 +3,7 @@ from BanditResults import BanditResults
 from agents.RandomAgent import RandomAgent
 from agents.SimpleAgent import SimpleAgent
 from agents.SimpleTrackingAgent import SimpleTrackingAgent
+from agents.GradientAgent import GradientAgent
 import matplotlib.pyplot as plt
 
 
@@ -35,7 +36,7 @@ if __name__ == "__main__":
     for run_id in range(NUM_OF_RUNS):
         bandit = BanditEnv(seed=run_id)
         num_of_arms = bandit.action_space
-        agent = SimpleTrackingAgent(num_of_arms)  # here you might change the agent that you want to use
+        agent = GradientAgent(num_of_arms)  # here you might change the agent that you want to use
         best_action = bandit.best_action
         for _ in range(NUM_OF_STEPS):
             action = agent.get_action()
